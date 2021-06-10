@@ -23,5 +23,5 @@ jobs:
 #         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: deploy in Liberty
-      run: cp home/runner/work/maven-enterprise-application/maven-enterprise-application/MavenEnterpriseApp-ear/target/MavenEnterpriseApp-ear.ear /Users/prakashdasariraju/work/wlp/usr/servers/helloserver
+    - name: copy ear file into dropins to deploy on linerty
+      run: Curl -v -T /home/runner/work/maven-enterprise-application/maven-enterprise-application/MavenEnterpriseApp-ear/target/MavenEnterpriseApp-ear.ear ‘http://macbook-pro:9080//Users/prakashdasariraju/work/wlp/usr/servers/helloserver’
