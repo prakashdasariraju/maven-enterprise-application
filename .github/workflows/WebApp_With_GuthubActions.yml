@@ -22,9 +22,6 @@ jobs:
       with:
         java-version: '1.8'
 #         distribution: 'adopt'
-
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
         
     - name: set up a cache for maven
       uses: actions/cache@v2
@@ -32,12 +29,16 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-key: ${{ runner.os }}-m2
+        
+    - name: Build with Maven
+      working-directory: github-actions-java-maven
+      run: mvn -B package --file pom.xml
       
     - name: String ear into a folder in github actions
       uses: actions/upload-artifact@v2
       with: 
         name: github-action-artifact
-        path: artifacts
+        path: github-actions-java-maven
     
 #     - name: copy ear file into dropins to deploy on linerty
 #       run: Curl -v -T /home/runner/work/maven-enterprise-application/maven-enterprise-application/MavenEnterpriseApp-ear/target/MavenEnterpriseApp-ear.ear ‘http://macbook-pro:9080//Users/prakashdasariraju/work/wlp/usr/servers/helloserver’
