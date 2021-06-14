@@ -29,11 +29,11 @@ jobs:
         mkdir artifacts && cp target/*.ear artifacts
         
     -name: set up a cache for maven
-      uses: action/cache@v2
-      with: 
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hasFiles(‘**/pom.xml’) }}
-        restore-key: ${{ runner.os }}-m2
+    uses: action/cache@v2
+    with: 
+      path: ~/.m2
+      key: ${{ runner.os }}-m2-${{ hasFiles(‘**/pom.xml’) }}
+      restore-key: ${{ runner.os }}-m2
       
     - name: String ear into a folder in github actions
       uses: actions/upload-artifact@v2
