@@ -33,7 +33,7 @@ jobs:
     - name: Build with Maven
 #       working-directory: github-actions-java-maven
       run: |
-        echo ls
+        ls
         mvn -B package --file pom.xml
       
     - name: String ear into a folder in github actions
