@@ -31,8 +31,10 @@ jobs:
         restore-key: ${{ runner.os }}-m2
         
     - name: Build with Maven
-      working-directory: github-actions-java-maven
-      run: mvn -B package --file pom.xml
+#       working-directory: github-actions-java-maven
+      run: |
+        echo ls
+        mvn -B package --file pom.xml
       
     - name: String ear into a folder in github actions
       uses: actions/upload-artifact@v2
